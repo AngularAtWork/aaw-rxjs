@@ -14,6 +14,7 @@
     border-radius: 5px;
     padding: 15px 0 0 0;
     min-width: calc(50vw - 20px);
+    position: relative;
     
     &.pt-0 {
       padding-top: 0;
@@ -36,6 +37,7 @@
     }
 
     .centered-content {
+      font-size: 2rem;
       font-weight: 700;
       min-height: 100%;
 
@@ -49,6 +51,15 @@
       font-weight: 700;
       margin-bottom: 1rem;
       text-align: center;
+
+      &.title-centered {
+        display: flex;
+        justify-content: center;
+
+        a {
+          padding: 0 5px;
+        }
+      }
     }
 
     .card-definition {
@@ -74,6 +85,15 @@
         margin-top: 1rem;
       }
     }
+
+    .card-footer {
+      font-size: 1.25rem;
+      position: absolute;
+      bottom: 20px;
+      text-align: end;
+      width: 95%;
+    }
+
     .card-grid {
       font-size: 1.4rem;
       padding: 15px 30px;
@@ -102,4 +122,21 @@
       }
     }
   }
+}
+
+.text-message {
+  color: $danger;
+
+  &-link {
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-style: dashed;
+  }
+}
+
+.fa-youtube {
+  font-size: 2rem;
+  color: #FF0000;
+  padding-left: 5px;
+  vertical-align: middle;
 }
