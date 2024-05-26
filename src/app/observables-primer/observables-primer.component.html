@@ -1,0 +1,128 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">Observable Entities, Actions & Concepts</div>
+    <ul>
+      <li><a class="concept" data-item="observable">Observable (definition)</a></li>
+      <li><a class="concept" data-item="observer">Observer</a></li>
+      <li><a class="concept" data-item="subscribe">Subscribe</a></li>
+      <li><a class="concept" data-item="next" >Next</a></li>
+      <li><a class="concept" data-item="complete">Complete</a></li>
+      <li><a class="concept" data-item="error">Error</a></li>
+      <li><a class="concept" data-item="observable-contract">Observable Contract</a></li>
+      <li><a class="concept" data-item="unsubscribe">Unsubscribe</a></li>
+      <li><a class="concept" data-item="finalization">Finalization</a></li>
+      <li><a class="concept" data-item="producer">Producer</a></li>
+      <li><a class="concept" data-item="cold">Cold</a></li>
+      <li><a class="concept" data-item="hot">Hot</a></li>
+      <li><a class="concept" data-item="unicast">Unicast</a></li>
+      <li><a class="concept" data-item="multicast">Multicast</a></li>
+      <li><a class="concept" data-item="a-point">About Unsubscribing...</a></li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="definition-cards">
+      <div id="observable" class="definition-card">
+        <div class="definition-card_title">Observable</div>
+        <div class="definition-card_meaning">
+          A method of returning zero to an unlimited number of values both
+          synchronously and asynchronously.
+        </div>
+      </div>
+      <div id="observer" class="definition-card highlight">
+        <div class="definition-card_title">Observer</div>
+        <div class="definition-card_meaning">
+          An object that contains callbacks for each type of
+          Observable notification: <code>next</code>, <code>error</code> and <code>complete</code>.
+        </div>
+      </div>
+      <div id="subscribe" class="definition-card">
+        <div class="definition-card_title">Subscribe</div>
+        <div class="definition-card_meaning">
+          The act of starting an Observable’s execution and receiving its
+          notifications.
+        </div>
+      </div>
+      <div id="next" class="definition-card">
+        <div class="definition-card_title">Next</div>
+        <div class="definition-card_meaning">
+          Method called to notify subscribers of a new value. Also known as
+          <em>‘emitting’</em>.
+        </div>
+      </div>
+      <div id="complete" class="definition-card">
+        <div class="definition-card_title">Complete</div>
+        <div class="definition-card_meaning">
+          Method called to notify subscribers that the Observable will no longer
+          pass values.
+        </div>
+      </div>
+      <div id="error" class="definition-card">
+        <div class="definition-card_title">Error</div>
+        <div class="definition-card_meaning">
+          Method called to notify subscribers that a problem has occurred with
+          producing values and that the Observable will no longer pass values.
+        </div>
+      </div>
+      <div id="observable-contract" class="definition-card">
+        <div class="definition-card_title">Observable Contract</div>
+        <div class="definition-card_meaning">
+          During an Observable’s execution, zero to an infinite number of values
+          can be emitted. When an Observable completes or errors, no further
+          emissions, completions or errors can take place.
+        </div>
+      </div>
+      <div id="unsubscribe" class="definition-card">
+        <div class="definition-card_title">Unsubscribe</div>
+        <div class="definition-card_meaning">
+          Terminates the subscriber’s receiving notifications.
+        </div>
+      </div>
+      <div id="finalization" class="definition-card">
+        <div class="definition-card_title">Finalization</div>
+        <div class="definition-card_meaning">
+          The return function of an Observable, guaranteed to be called when
+          it completes or errors or when a subscriber unsubscribes.
+        </div>
+      </div>
+      <div id="producer" class="definition-card">
+        <div class="definition-card_title">Producer</div>
+        <div class="definition-card_meaning">
+          Anything that is the source of the values that are emitted
+          by the Observable.
+        </div>
+      </div>
+      <div id="cold" class="definition-card">
+        <div class="definition-card_title">Cold</div>
+        <div class="definition-card_meaning">
+          The producer of the Observable's values is inside the Observable
+          execution.
+        </div>
+      </div>
+      <div id="hot" class="definition-card">
+        <div class="definition-card_title">Hot</div>
+        <div class="definition-card_meaning">
+          The producer of the Observable's values is outside the Observable
+          execution.
+        </div>
+      </div>
+      <div id="unicast" class="definition-card">
+        <div class="definition-card_title">Unicast</div>
+        <div class="definition-card_meaning">
+          One producer is observed by one subscriber.<br><br>Cold Observables are always unicast.
+        </div>
+      </div>
+      <div id="multicast" class="definition-card">
+        <div class="definition-card_title">Multicast</div>
+        <div class="definition-card_meaning">
+          One producer is observed by many subscribers.<br><br>Hot Observables are almost always multicast.
+        </div>
+      </div>
+      <div id="a-point" class="definition-card">
+        <div class="definition-card_title">About Unsubscribing...</div>
+        <div class="definition-card_meaning">
+          ALWAYS UNSUBSCRIBE ALL SUBSCRIPTIONS WHEN THEY'RE NO LONGER NEEDED!!!
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

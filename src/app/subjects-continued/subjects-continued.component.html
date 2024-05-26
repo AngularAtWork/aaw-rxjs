@@ -1,0 +1,107 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">Subjects</div>
+    <div class="side-bar_definition">
+      A Subject is an object that is both an Observable (it has a <code>subscribe</code> method) and an Observer (it has <code>next</code>, <code>complete</code> and <code>error</code> methods).
+    </div>
+    <div class="side-bar_definition">
+      A Subject can start emitting values BEFORE it is subscribed to.
+    </div>
+    <div class="list-title">
+      Types of Subjects:
+    </div>
+    <ul>
+      <li>Subject (aka 'Regular' Subject)</li>
+      <li>BehaviorSubject</li>
+      <li>ReplaySubject</li>
+      <li>AsyncSubject</li>
+    </ul>
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        To create other operators.
+      </li>
+      <li>
+        As a state management tool.
+      </li>
+    </ul>
+    <div class="list-title emphasis">
+      Beware:
+    </div>
+    <p>
+      Subjects do not complete until forced to.
+    </p>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="ui$ | async as ui">
+      <div class="layout_heading">
+        <div class="heading_title">Customers</div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Search Customer last name:</div>
+            <input
+              type="text"
+              placeholder="Type search text"
+              [value]="ui.searchText"
+              (keyup)="changeSearchText($event)"
+            />
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Select a State/Territory:</div>
+            <select
+              *ngIf="ui.selectedState as selectedState"
+              (change)="changeState($event)"
+            >
+              <option value="(All)" [selected]="selectedState === '(All)'">
+                (All)
+              </option>
+              <ng-container *ngIf="ui.statesWithCustomers as statesWithCustomers">
+                <option
+                  *ngFor="let state of statesWithCustomers"
+                  [value]="state.code"
+                  [selected]="selectedState === state.code"
+                >
+                  {{ state.name }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <button
+              type="button"
+              class="btn btn-link btn-primary"
+              (click)="addCustomer()"
+            >
+              Add Customer
+            </button>
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <button
+              type="button"
+              class="btn btn-link btn-primary"
+              (click)="reset()"
+              [disabled]="ui.disableReset"
+            >
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="layout_data" *ngIf="ui.filteredCustomers as filteredCustomers">
+        <app-customer-table-with-actions [customers]="filteredCustomers"
+                (removeCustomer)="deleteCustomer($event)"
+                (editCustomer)="updateCustomer($event)"
+        ></app-customer-table-with-actions>
+      </div>
+    </ng-container>
+  </section>
+</div>
+  

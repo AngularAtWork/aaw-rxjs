@@ -1,0 +1,61 @@
+@import '../../assets/scss/variables';
+
+.content {
+  max-height: calc(100vh - 6rem);
+}
+
+ul {
+  list-style: none;
+  align-self: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 1fr;
+  justify-content: center;
+  gap: 1.5rem 1.5rem;
+
+  li {
+    height: calc((100vh - (7rem + (7 * 1.5rem))) / 7);
+    background-color: $white;
+    color: $primary;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    a.nav-link {
+      text-align: center;
+    }
+  }
+}
+
+a:link {
+  text-decoration: none;
+  color: $primary; 
+}
+
+a:visited {
+  text-decoration: none;
+  color: $primary;
+}
+
+li.highlight a,
+a:hover {
+  text-decoration: none;
+  color: $secondary;
+}
+
+a:active {
+  text-decoration: none;
+  color: $primary-darker;
+}
+
+a.muted {
+  color: $gray-300;
+}

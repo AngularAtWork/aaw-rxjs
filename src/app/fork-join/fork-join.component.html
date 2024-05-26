@@ -1,0 +1,41 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">forkJoin</div>
+    <div class="side-bar_definition">
+      A creation, join operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        A function that accepts an array of Observables, emits an array consisting of 
+        the last value of each of the Observables and then completes. <strong>Each of the 
+        Observables in the array must complete in order that the function may emit its value.</strong>
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        When you want your entire UI, that consists of multiple back end calls, to populate 
+        at once.
+      </li>     
+    </ul>
+  </aside>
+
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Customers with Accounts Sorted by Last Name</div>
+    </div>
+    <div class="layout_data">
+      <div class="customer-cards">
+        <ng-container *ngFor="let customer of customers$ | async">
+          <app-customer-card [customer]="customer"></app-customer-card>
+        </ng-container>
+      </div>
+    </div>
+  </section>  
+</div>

@@ -1,0 +1,108 @@
+@import '../../../assets/css/aaw.css';
+@import '../../../assets/scss/variables';
+
+.customer-card {
+  background-color: $white;
+  border-radius: 5px;
+  color: $primary;
+  height: 300px;
+  padding: 15px;
+
+  display: grid;
+  grid-template-rows: 30px 45px 1fr 50px 20px;
+}
+
+.customer-heading {
+  color: $primary;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer-contact-info,
+.customer-personal-info {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.customer-personal-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.customer-contact-info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.customer-address-zip,
+.customer-state-heading,
+.customer-address-heading,
+.customer-phone-heading,
+.customer-email-heading {
+  font-weight: 600;
+}
+
+.customer-address,
+.customer-phone,
+.customer-email {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+}
+
+.customer-address-info {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.customer-footer,
+.customer-accounts-info {
+  font-size: 1.2rem;
+}
+
+.customer-age-heading,
+.customer-transaction-date_heading,
+.customer-accounts-heading {
+  font-weight: 600;
+}
+
+.customer-account {
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer-accounts-heading {
+  margin-bottom: 8px;
+}
+
+.customer-accounts-total {
+  font-weight: 600;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.customer-accounts-total_heading {
+  padding-left: 200px;
+  padding-right: 25px;
+}
+
+.account-name {
+  font-weight: 600;
+}
+
+.account-number {
+  // font-size: 0.7rem;
+}
+
+.customer-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-item {
+  font-size: 1.4rem;
+}

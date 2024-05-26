@@ -1,0 +1,57 @@
+
+a {
+  cursor: pointer;
+}
+
+.highlighted {
+  font-weight: 700;
+}
+
+.slide-viewer {
+  height: 100%;
+  width: auto;
+  background-size: contain;
+  background-position: left;
+  background-repeat: no-repeat;
+  padding-top: unset;
+  
+  &.selected-image-reactive {
+    background-image: url('../../assets/images/ReactiveProgramming.png');
+  }
+
+  &.selected-image-imperative1 {
+    background-image: url('../../assets/images/ImperativeProgramming.png');
+  }
+
+  &.selected-image-imperative2 {
+    background-image: url('../../assets/images/ImperativeProgrammingCont.png');
+  }
+
+  &.selected-image-creation-operators1 {
+    background-image: url('../../assets/images/CreationOperatorsThatComplete1.png');
+  }
+
+  &.selected-image-creation-operators2 {
+    background-image: url('../../assets/images/CreationOperatorsThatComplete2.png');
+  }
+
+  &.selected-image-create-pipeable {
+    background-image: url('../../assets/images/HowToCreateCustomPipeableOperator.png');
+  }
+
+  &.selected-image-marble-diagram-overview {
+    background-image: url('../../assets/images/MarbleDiagramOverview.png');
+  }
+
+  &.selected-image-zip-marble-diagram {
+    background-image: url('../../assets/images/ZipMarbleDiagram.png');
+  }
+  
+  &.selected-image-higher-order-mapping-operators {
+    background-image: url('../../assets/images/HigherOrderMappingOperators.png');
+  }
+
+  &.selected-image-create-creation {
+    background-image: url('../../assets/images/HowToCreateCustomCreationOperator.png');
+  }
+}

@@ -1,0 +1,87 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">defer</div>
+    <div class="side-bar_definition">
+      A creation operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Calls an Observable factory, that creates the Observable lazily, that is, only when it is subscribed.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        When you want multiple subscribers to have different pipeline results.  This usually involves pipelines that involves randomization or date/timestamping.
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+      <div class="layout_heading">
+        <span class="instructions">Enter 4 Digit Passcode</span>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <input #passcode
+              type="text"
+              [maxLength]="4"
+              pattern="[0-9]{4}"
+              appNumbersOnly
+              [disabled]="(blockChange$ |async)"
+              (keyup)="enteringPasscode($event)"
+            />
+          </div>
+        </div>
+  
+        <div class="heading_controls">
+          <div class="subject-input">
+            <button
+              type="button"
+              class="btn btn-link btn-primary"
+              [disabled]="!(isCodeValid$ | async) || (blockChange$ |async)"
+              (click)="submitPasscode()"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="display">
+        <div class="keypad">
+          <ng-container *ngIf="newArray$ | async as newArray">
+            <app-lock-keypad *ngIf="(visiblePad$ | async) === 1" [arrayOfNumbers]="newArray" [blockEntry]="blockEntry$ | async" (entered)="enteredDigits1($event)"></app-lock-keypad>
+          </ng-container>
+          <ng-container *ngIf="newArray$ | async as newArray">
+            <app-lock-keypad *ngIf="(visiblePad$ | async) === 2" [arrayOfNumbers]="newArray" [blockEntry]="blockEntry$ | async" (entered)="enteredDigits2($event)"></app-lock-keypad>
+          </ng-container>
+          <ng-container *ngIf="newArray$ | async as newArray">
+            <app-lock-keypad *ngIf="(visiblePad$ | async) === 3" [arrayOfNumbers]="newArray" [blockEntry]="blockEntry$ | async" (entered)="enteredDigits3($event)"></app-lock-keypad>
+          </ng-container>
+          <ng-container *ngIf="newArray$ | async as newArray">
+            <app-lock-keypad *ngIf="(visiblePad$ | async) === 4" [arrayOfNumbers]="newArray" [blockEntry]="blockEntry$ | async" (entered)="enteredDigits4($event)"></app-lock-keypad>
+          </ng-container>
+
+          <div class="message" [hidden]="blockEntry$ | async">
+            Enter passcode to unlock
+          </div>
+        </div>
+
+        <div class="lock" [@fadeAnimation]="testLock$ | async">
+          <div *ngIf="!(testLock$ | async)" class="locked">
+            <span>LOCKED</span>
+          </div>
+          <div *ngIf="(testLock$ | async)" class="unlocked">
+            <span>UNLOCKED</span>
+          </div>
+          <div *ngIf="showInvalidMessage$ | async" class="invalid-message">Invalid entry.  Please try again.</div>
+        </div>
+  
+      </div>
+  </section>
+</div>

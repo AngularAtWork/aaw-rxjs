@@ -1,0 +1,60 @@
+@import '../../assets/scss/variables';
+
+.side-bar li {
+  padding-bottom: 15px;
+}
+
+
+.layout {
+  padding-right: 15px;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  gap: 20px;
+
+  &_heading {
+    background-color: $white;
+    border-radius: 5px;
+    color: $primary;
+    font-weight: 700;
+    padding: 15px;
+    vertical-align: middle;
+
+    display: grid;
+    grid-template-columns: 1.5fr 1.25fr 0.5fr;
+  }
+
+  .layout-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+    .layout-column {
+      padding: 15px;
+
+      .layout-column_heading {
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+      }
+    }
+
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.error-message {
+  color: $primary;
+  font-size: 2rem;
+  font-weight: 700;
+  min-height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    padding: 0 10px;
+    color: $danger;
+  }
+}

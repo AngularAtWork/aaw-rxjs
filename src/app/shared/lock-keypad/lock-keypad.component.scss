@@ -1,0 +1,87 @@
+
+@import '../../../assets/scss/variables';
+
+:host {
+
+  margin-left: 15px;
+
+  .quadrant,
+  .container {
+
+    background-color: $gray-500;
+    color: $white;
+
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-template-rows: min-content min-content;
+    gap: 15px;
+
+    .top-left,
+    .top-right,
+    .bottom-left,
+    .bottom-right {
+
+      font-size: 3rem;
+      font-weight: 600;
+      padding: 2rem;
+
+    }
+  }
+
+  .container {
+    margin: auto auto;
+    margin-bottom: 5px;
+    padding: 15px 15px 30px 15px;
+    width: fit-content;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+  }
+
+  .digit-container {
+
+    display: grid;
+    grid-template-rows: min-content min-content;
+
+    .digit-control {
+
+      display: flex;
+      justify-content: center;
+
+      button {
+        font-size: 2.5rem;
+        border-radius: 5px;
+      }
+
+      .btn.btn-primary {
+        background-color: $secondary;
+        color: $white;
+
+        &:hover {
+          background-color: $white;
+          color: $secondary;
+        }
+
+        &:disabled {
+          border-color: $gray-400;
+          background-color: $gray-400;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .number-circle {
+    width: 2rem;
+    height: 2rem;
+    box-sizing: initial;
+
+    background: #fff;
+    border: 0.1em solid $gray-500;
+    color: $gray-500;
+    text-align: center;
+    border-radius: 50%;    
+
+    line-height: 2rem;
+    box-sizing: content-box;   
+
+  }
+}

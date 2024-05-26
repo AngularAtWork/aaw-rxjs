@@ -1,0 +1,77 @@
+// Variables
+// =========================================================
+
+$root-path:                                                 "../";
+
+
+//
+// Color system
+//
+
+// stylelint-disable
+$white:                                                     #fff !default;
+$black:                                                     #000 !default;
+$transparent:                                               transparent !default;
+
+
+// Grays
+$gray-100:                                                  #f5f4f8 !default;
+$gray-200:                                                  #eeeef1 !default;
+$gray-300:                                                  #cdced6 !default;
+$gray-400:                                                  #8b8e9f !default;
+$gray-500:                                                  #4a4e69 !default;
+$gray-600:                                                  #6c757d !default;
+$gray-333:                                                  #333333 !default;
+
+// Colors
+$teal:                                                      #00c9a7 !default;
+$blue:                                                      #377dff !default;
+$cyan:                                                      #00dffc !default;
+$yellow:                                                    #fcd53b !default;
+$red:                                                       #de4437 !default;
+$purple:                                                    #796eff !default;
+
+// Social Colors
+$facebook:                                                  #3b5998 !default;
+$google:                                                    #dd4b39 !default;
+$twitter:                                                   #1da1f2 !default;
+$instagram:                                                 #e1306c !default;
+$github:                                                    #333 !default;
+
+$social-network-colors: () !default;
+$social-network-colors: map-merge((
+  "facebook":                                               $facebook,
+  "google":                                                 $google,
+  "twitter":                                                $twitter,
+  "instagram":                                              $instagram,
+  "github":                                                 $github
+), $social-network-colors);
+
+// Theme Colors
+$primary:                                                   #14591D !default;
+$primary-darker:                                            darken($primary, 27%) !default;
+$primary-lighter:                                           lighten($primary, 27%) !default;
+$secondary:                                                 #d9711c !default;
+$secondary-shadow:                                          rgba(217, 113, 28, 0.35) !default;
+$tertiary:                                                  #43250f !default;
+$tertiary-shadow:                                           rgba(67, 37, 15, 0.35) !default;                                
+$tertiary-darker:                                           darken($tertiary, 10%) !default;
+$tertiary-lighter:                                          lighten($tertiary, 10%) !default;
+$fourth:                                                    #d7f75b !default;
+$success:                                                   #0cdcb9 !default;
+$info:                                                      #474dee !default;
+$warning:                                                   #fcd53b !default;
+$danger:                                                    #ef5b5b !default;
+$light:                                                     $gray-300 !default;
+$lighter:                                                   $gray-100 !default;
+$dark:                                                      #1e2022 !default;
+$darker:                                                    #151829 !default;
+
+$theme-colors: () !default;
+$theme-colors: map-merge((
+  "primary-darker":                                         $primary-darker,
+  "primary-lighter":                                        $primary-lighter,
+  "darker":                                                 $darker,
+  "lighter":                                                $lighter,
+  "light":                                                  $light,
+), $theme-colors);

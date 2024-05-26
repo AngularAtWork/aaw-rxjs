@@ -1,0 +1,148 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">switchMap</div>
+    <div class="side-bar_definition">A pipeable, transformation operator</div>
+    <div class="list-title">What It Does:</div>
+    <ul>
+      <li>
+        As its source Observable emits, <code>switchMap</code> cancels each  
+        inner Observable it's running*.  It will return the values of the 
+        inner Observable that are not interrupted by an emission from the 
+        source Observable.
+        <br>
+        <br>
+        <em>NOTE:  The interrupted inner Observable is cancelled only if 
+          possible.  If the inner Observable returns a value, that value 
+          will be returned by the <code>switchMap</code>.
+        </em>
+      </li>
+    </ul>
+
+    <div class="list-title">When To Use It:</div>
+    <ul>
+      <li>
+        To make backend calls that perform CRUD operations within an 
+        Observable stream.
+      </li>
+      <li>
+        Use with typeaheads that get their data from backend calls.
+      </li>
+    </ul>
+    
+    <div class="list-title">How It Differs From the Other Higher Order Mapping Operators</div>
+    <ul>
+      <li>
+        The ability to cancel the inner Observable when the source Observable emits 
+        before its completion.
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="vm$ | async as vm">
+      <div class="layout_data">
+        <div class="layout_heading">
+          <div class="heading_controls_col">
+            <div class="heading_title">Filter Controls</div>
+            <div class="heading_controls">
+              <div class="subject-input">
+                <button
+                  type="button"
+                  class="btn btn-link btn-primary"
+                  (click)="reset()"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="heading_controls_col">
+            <div class="controls_row">
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Search Text:</div>
+                  <input
+                    type="text"
+                    placeholder="Type search text"
+                    [value]="vm.searchText"
+                    (keyup)="keyupSearchText($event)"
+                  />
+                </div>
+              </div>
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Select a State/Territory:</div>
+                  <select (change)="selectedJurisdiction($event)">
+                    <option value="(All)">(All)</option>
+                    <ng-container
+                      *ngIf="vm.allJurisdictions as jurisdictions"
+                    >
+                      <option
+                        *ngFor="let juris of jurisdictions"
+                        [value]="juris.code"
+                        [selected]="(vm.selectedJurisdiction) === juris.code"
+                      >
+                        {{ juris.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="controls_row">
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Ages:</div>
+                  <div class="subject-radio">
+                    <label for="radioAges1">
+                      <input type="radio" id="radioAges1" name="ages" value="all" [checked]="vm.selectedAges === 'all'" (change)="selectedAges($event)">
+                      All
+                    </label>
+                    <label for="radioAges2">
+                      <input type="radio" id="radioAges2" name="ages" value="under18" [checked]="vm.selectedAges === 'under18'" (change)="selectedAges($event)">
+                      &lt;&nbsp;18
+                    </label>
+                    <label for="radioAges3">
+                      <input type="radio" id="radioAges3" name="ages" value="over67" [checked]="vm.selectedAges === 'over67'" (change)="selectedAges($event)">
+                      &gt;&nbsp;67
+                    </label>
+                  </div>
+                </div>
+              </div> 
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div></div>
+                  <div class="subject-input_heading j-right">Show Only Multi-Account Customers:
+                    <input type="checkbox" [checked]="vm.showMultiAccountCustomers" (change)="selectedShowMulti($event)">
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="heading_controls_single">
+            <div class="heading_controls">
+              <div class="subject-input">
+                <button
+                  type="button"
+                  class="btn btn-link btn-primary"
+                  (click)="addCustomer()"
+                >
+                  Add Customer
+                </button>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <ng-container *ngIf="vm.filteredCustomers as customers">
+            <div class="layout_data">
+              <div class="customer-cards">
+                <ng-container *ngFor="let customer of customers">
+                  <app-customer-card-with-actions [customer]="customer" (editCustomer)="editCustomer($event)" (removeCustomer)="removeCustomer($event)"></app-customer-card-with-actions>
+                </ng-container>
+              </div>
+            </div>      
+        </ng-container>
+      </div>
+    </ng-container>
+  </section>
+</div>

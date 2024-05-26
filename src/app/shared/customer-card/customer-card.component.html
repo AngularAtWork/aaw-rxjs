@@ -1,0 +1,43 @@
+<div class="customer-card">
+  <div class="customer-heading">
+    <div class="customer-name">{{ customer.last }}, {{ customer.first }}</div>
+    <div class="customer-number">{{ customer.id }}</div>
+  </div>
+  <div class="customer-personal-info">
+    <div class="customer-age">
+      <span class="customer-age-heading">Age: &nbsp;</span>
+      <span>{{ customer.age }}</span>
+    </div>
+    <div class="customer-address">
+      <span>State/Territory: &nbsp;</span>{{ customer.state}}
+    </div>
+  </div>
+  <div class="customer-accounts-info">
+    <div class="customer-accounts-heading">Accounts: &nbsp;{{ customer.accounts?.length }}</div>
+    <ng-container *ngFor="let account of customer.accounts">
+      <div class="customer-accounts">
+        <div class="customer-account">
+          <div class="customer-account-1">
+            <span class="account-name">{{ account.accountType }}: &nbsp;</span>
+            <span class="account-number">{{ account.accountNumber }}</span>
+          </div>
+          <div class="customer-account-2">
+            <span class="account-balance">{{ account.balance | currency }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="customer-accounts-total">
+    <span class="customer-accounts-total_heading">
+      Total: &nbsp;
+    </span>
+    <span>{{ customer.accountsTotal | currency }}</span>
+  </div>
+  <div class="customer-footer">
+    <div class="customer-transaction-date">
+      <span class="customer-transaction-date_heading">Last Transaction Date: &nbsp;</span>
+      <span>{{ customer.lastTransactionDate }}</span>
+    </div>
+  </div>
+</div>

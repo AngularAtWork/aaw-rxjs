@@ -1,0 +1,43 @@
+@import '../../assets/scss/variables';
+
+.side-bar {
+  
+  .list-title,
+  .challenges {
+    color: transparent;
+    
+    li {
+      padding-bottom: 15px;
+
+      &.highlight {
+        color: $black;
+      }
+    }
+  }
+}
+
+.list-title:has(+ ul .highlight) {
+  color: black;
+}
+
+
+.layout {
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  gap: 10px 20px;
+
+
+  &_heading {
+    background-color: $white;
+    border-radius: 5px;
+    color: $primary;
+    padding: 15px;
+    vertical-align: middle;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+

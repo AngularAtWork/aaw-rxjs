@@ -1,0 +1,49 @@
+<div class="widget" *ngIf="customers">
+  <div class="table-responsive">
+    <table class="table align-items-center">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 450px">Customer Name/No.</th>
+          <th scope="col" class="text-center">Age</th>
+          <th scope="col" class="text-center">State/Territory</th>
+          <th scope="col" class="text-center">No. of Accounts</th>
+          <th scope="col" class="text-right">Balance Total</th>
+          <th scope="col" class="text-center" style="width: 350px">
+            Last Transaction Date
+          </th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr *ngFor="let customer of customers">
+          <th scope="row">
+            <div class="media align-items-center">
+              <div class="media-body">
+                <div class="lh-100">
+                  <span
+                    class="customer-highlight text-dark font-weight-bold mb-0"
+                    >{{ customer.last | uppercase }},
+                    {{ customer.first }}</span
+                  >
+                </div>
+                <span class="font-weight-bold text-muted">{{
+                  customer.id
+                }}</span>
+              </div>
+            </div>
+          </th>
+          <td class="price text-center">{{ customer.age }}</td>
+          <td class="text-center">
+            <span class="font-weight-heavy">{{ customer.state }}</span>
+          </td>
+          <td class="text-center">{{ customer.accounts?.length }}</td>
+          <td class="total text-right">
+            <span class="customer-highlight">{{
+              customer.accountsTotal | currency
+            }}</span>
+          </td>
+          <td class="text-center">{{ customer.lastTransactionDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

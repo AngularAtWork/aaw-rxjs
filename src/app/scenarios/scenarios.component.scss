@@ -1,0 +1,79 @@
+@import '../../assets/scss/variables';
+
+.content {
+  max-width: 100vw;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  gap: 10px;
+
+  li {
+    background-color: $white;
+    color: $primary;
+    font-weight: 700;
+    padding: 15px;
+    border-radius: 5px;
+
+    display: grid;
+    grid-template-rows: 2rem 6rem 1fr;
+
+    * {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header {
+      font-weight: normal;
+    }
+
+    .description {
+      font-style: italic;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    a.nav-link {
+      color: $secondary;
+      padding: 0 1rem;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+a:link {
+  text-decoration: none;
+  color: $primary; 
+}
+
+a:visited {
+  text-decoration: none;
+  color: $primary;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $primary-darker;
+}
+
+a:active {
+  text-decoration: none;
+  color: $primary-darker;
+}
+
+a.muted {
+  color: $gray-300;
+}

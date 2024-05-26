@@ -1,0 +1,36 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">interval</div>
+    <div class="side-bar_definition">
+      A creation operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Creates an Observable that emits sequential numbers every specified interval of time.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        To perform polling operations within your application.
+      </li>    
+    </ul>
+    <div class="list-title emphasis">
+      Beware:
+    </div>
+    <p>
+      This creates an Observable that NEVER completes and thus, CONTINUOUSLY emits values!!!
+    </p>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Number :&nbsp;<span *ngIf="{ value: number$ | async} as num">{{ num.value }}</span></div>
+    </div>
+  </section>
+</div>

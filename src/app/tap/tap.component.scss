@@ -1,0 +1,28 @@
+@import '../../assets/scss/variables';
+
+.side-bar li {
+  padding-bottom: 15px;
+
+  p {
+    margin-block-start: .5rem;
+    margin-block-end: .5rem;
+  }
+}
+
+
+.layout {
+  padding-right: 15px;
+  display: grid;
+  grid-template-rows: 6rem 1fr;
+  gap: 20px;
+
+  &_heading {
+    background-color: $white;
+    border-radius: 5px;
+    color: $primary;
+    font-weight: 700;
+    padding: 15px;
+    vertical-align: middle;
+  }
+}
+

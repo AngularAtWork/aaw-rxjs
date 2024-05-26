@@ -1,0 +1,77 @@
+<div class="customer-card">
+  <div class="customer-heading">
+    <div class="customer-name">{{ customer.last }}, {{ customer.first }}</div>
+    <div class="customer-number">{{ customer.id }}</div>
+  </div>
+  <div class="customer-personal-info">
+    <div class="customer-age">
+      <span class="customer-age-heading">Age: &nbsp;</span>
+      <span>{{ customer.age }}</span>
+    </div>
+    <div class="customer-state">
+      <span class="customer-state-heading">State/Territory: &nbsp;</span>
+      <span>{{ customer.state}}</span>
+    </div>
+  </div>
+  <ng-container *ngIf="!customer.accounts?.length">
+    <div class="customer-contact-info">
+      <div class="customer-address">
+        <span class="customer-address-heading">Address: &nbsp;</span>
+        <div class="customer-address-info">
+          <span>{{ customer.address }}</span>
+          <span>{{ customer.city }}  <span class="customer-address-zip">{{ customer.zip }}</span></span>
+        </div>
+      </div>
+      <div class="customer-email">
+        <span class="customer-email-heading">Email:</span>
+        <span>{{ customer.email }}</span>
+      </div>
+      <div class="customer-phone">
+        <span class="customer-phone-heading">Phone:</span>
+        <span>{{ customer.phone }}</span>
+      </div>
+    </div>
+    <div></div>
+  </ng-container>
+  <ng-container *ngIf="customer.accounts?.length">
+    <div class="customer-accounts-info">
+      <div class="customer-accounts-heading">Accounts: &nbsp;{{ customer.accounts?.length }}</div>
+      <ng-container *ngFor="let account of customer.accounts">
+        <div class="customer-accounts">
+          <div class="customer-account">
+            <div class="customer-account-1">
+              <span class="account-name">{{ account.accountType }}: &nbsp;</span>
+              <span class="account-number">{{ account.accountNumber }}</span>
+            </div>
+            <div class="customer-account-2">
+              <span class="account-balance">{{ account.balance | currency }}</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="customer-accounts-total">
+      <span class="customer-accounts-total_heading">
+        Total: &nbsp;
+      </span>
+      <span>{{ customer.accountsTotal | currency }}</span>
+    </div>
+  </ng-container>
+  <div class="customer-footer">
+    <div class="customer-transaction-date">
+      <span class="customer-transaction-date_heading">Last Transaction Date: &nbsp;</span>
+      <span>{{ customer.lastTransactionDate }}</span>
+    </div>
+    <div class="actions">
+      <!-- Actions -->
+      <div class="actions ml-3">
+        <a class="action-item" (click)="update(customer)" [ngClass]="{'disabled': customer.disableEditing}" data-toggle="tooltip" title=" Edit Customer">
+            <i class="fas fa-pencil"></i>
+        </a>
+        <a class="action-item" (click)="delete(customer)" [ngClass]="{'disabled': customer.disableDeletion}" data-toggle="tooltip" title="Delete Customer">
+            <i class="fas fa-trash"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+</div>

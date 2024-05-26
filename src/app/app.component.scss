@@ -1,0 +1,74 @@
+@import '../assets/scss/variables';
+
+
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Open Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: $gray-333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.heading {
+  height: 5rem;
+  padding: 0 30px;
+  position: fixed;
+  width: 100%;
+  background-color: $primary;
+  color: $fourth;
+  font-size: 2rem;
+  font-weight: 600;
+  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
+  z-index: 1000;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
+  align-items: center;
+  
+  &_logo {
+    font-size: 24px;
+  }
+  
+  .home {
+    color: lighten($secondary, 10);
+  }
+
+  &_subtitle {
+    text-align: end;
+  }
+
+  .nav-link {
+    text-align: center;
+    color: $fourth;
+  }
+}
+
+
+.main {
+  padding: 6rem 15px 0 15px;
+  min-height: 100vh;
+  font-size: 1.4rem;
+
+  display: flex;
+}

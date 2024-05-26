@@ -1,0 +1,38 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">sortObs</div>
+    <div class="side-bar_definition">
+      A custom pipeable, transformation operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Sorts the result of the source Observable, which must be an array of objects. 
+        Sorts by a given object property in a given order. 
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        Sort the result of the source Observable, if and only if the result is an array.
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Customers</div>
+    </div>
+    <div class="layout_data">
+      <div class="customer-cards">
+        <ng-container *ngFor="let customer of customers$ | async">
+          <app-customer-card [customer]="customer"></app-customer-card>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>

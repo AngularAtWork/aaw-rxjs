@@ -1,0 +1,136 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">How To Create a Custom Creation Operator</div>
+    <div class="side-bar_definition">
+    </div>
+    <div class="list-title">
+      How To:
+    </div>
+    <ul>
+      <li>
+        Create a JavaScript function that takes an observable as a parameter as well as any number of required and/or optional parameters.
+      </li>
+      <li>
+        That function should return an observable, derived in any way you like, that includes a pipeline which uses the observable passed in as a parameter.
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="vm$ | async as vm">
+      <div class="layout_data">
+        <div class="layout_heading">
+          <div class="heading_controls_col">
+            <div class="heading_title">Filter Controls</div>
+            <div class="heading_controls">
+              <div class="subject-input">
+                <button
+                  type="button"
+                  class="btn btn-link btn-primary"
+                  (click)="reset()"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="heading_controls_col">
+            <div class="controls_row">
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Search Text:</div>
+                  <input
+                    type="text"
+                    placeholder="Type search text"
+                    [value]="vm.searchText"
+                    (keyup)="keyupSearchText($event)"
+                  />
+                </div>
+              </div>
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Select a State/Territory:</div>
+                  <select (change)="selectedJurisdiction($event)">
+                    <option value="(All)">(All)</option>
+                    <ng-container
+                      *ngIf="vm.allJurisdictions as jurisdictions"
+                    >
+                      <option
+                        *ngFor="let juris of jurisdictions"
+                        [value]="juris.code"
+                        [selected]="(vm.selectedJurisdiction) === juris.code"
+                      >
+                        {{ juris.name }}
+                      </option>
+                    </ng-container>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="controls_row">
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div class="subject-input_heading">Ages:</div>
+                  <div class="subject-radio">
+                    <label for="radioAges1">
+                      <input type="radio" id="radioAges1" name="ages" value="all" [checked]="vm.selectedAges === 'all'" (change)="selectedAges($event)">
+                      All
+                    </label>
+                    <label for="radioAges2">
+                      <input type="radio" id="radioAges2" name="ages" value="under18" [checked]="vm.selectedAges === 'under18'" (change)="selectedAges($event)">
+                      &lt;&nbsp;18
+                    </label>
+                    <label for="radioAges3">
+                      <input type="radio" id="radioAges3" name="ages" value="over67" [checked]="vm.selectedAges === 'over67'" (change)="selectedAges($event)">
+                      &gt;&nbsp;67
+                    </label>
+                  </div>
+                </div>
+              </div> 
+              <div class="heading_controls">
+                <div class="subject-input">
+                  <div></div>
+                  <div class="subject-input_heading j-right">Show Only Multi-Account Customers:
+                    <input type="checkbox" [checked]="vm.showMultiAccountCustomers" (change)="selectedShowMulti($event)">
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="heading_controls heading_controls_buttons">
+            <div class="heading_controls">
+              <div class="subject-input">
+                <button
+                  type="button"
+                  class="btn btn-link btn-primary"
+                  (click)="addCustomer()"
+                >
+                  Add Customer
+                </button>
+              </div>
+            </div>
+            <div class="heading_controls">
+              <div class="subject-input">
+                <button
+                  type="button"
+                  class="btn btn-link btn-primary"
+                  (click)="refresh()"
+                >
+                  Resfresh
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="vm.filteredCustomers as customers">
+            <div class="layout_data">
+              <div class="customer-cards">
+                <ng-container *ngFor="let customer of customers">
+                  <app-customer-card-with-actions [customer]="customer" (editCustomer)="editCustomer($event)" (removeCustomer)="removeCustomer($event)"></app-customer-card-with-actions>
+                </ng-container>
+              </div>
+            </div>      
+        </ng-container>
+      </div>
+    </ng-container>
+  </section>
+</div>

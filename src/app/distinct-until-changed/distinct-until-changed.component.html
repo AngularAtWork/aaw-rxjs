@@ -1,0 +1,80 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">distinctUntilChanged</div>
+    <div class="side-bar_definition">
+      A pipeable, filter operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Allows the emission of the source Observable only if the current emission differs 
+        from the previous emission.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        To prevent emissions of duplicate values.  This is particularly important if the source Observable 
+        is used to make a backend call. 
+      </li>     
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+    <div class="heading_title">Filter Controls</div>
+      <div class="heading_controls">
+        <div class="subject-input">
+          <div class="subject-input_heading">Search Text:</div>
+          <input type="text" placeholder="Type search text" (keyup)="keyupSearchText($event)"/>
+        </div>
+      </div>
+      <div class="heading_controls">
+        <div class="subject-input">
+          <div class="subject-input_heading">Select a State/Territory:</div>
+          <select (change)="selectedJurisdiction($event)">
+            <option value="(All)">(All)</option>
+            <ng-container *ngIf="jurisdictions$ | async as allJurisdictions">
+              <option *ngFor="let juris of allJurisdictions" [value]="juris.code">{{ juris.name }}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="heading_controls">
+        <div class="subject-input">
+          <div class="subject-input_heading">Sort By:</div>
+          <div class="sort-controls">
+            <select (change)="selectSortProperty($event)">
+              <option value="last">Last Name</option>
+              <option value="state">State/Territory</option>
+            </select>
+            <div class="subject-radio">
+              <label for="orderAsc">
+                <input type="radio" id="orderAsc" name="order" value="asc" checked="true" (change)="changeSortOrder($event)">
+                ascending
+              </label>
+              <label for="orderDesc">
+                <input type="radio" id="orderDesc" name="order" value="desc" (change)="changeSortOrder($event)">
+                descending
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>       
+    </div>
+    <div class="layout_subheading">
+      <div class="heading_title">Filtered Customers</div>
+    </div>
+    <div class="">
+      <div class="customer-cards">
+        <ng-container *ngFor="let customer of filteredCustomers$ | async">
+          <app-customer-card [customer]="customer"></app-customer-card>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>

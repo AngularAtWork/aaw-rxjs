@@ -1,0 +1,31 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">delay</div>
+    <div class="side-bar_definition">
+      A pipeable, utility operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Shifts the emission of values from the source Observable by a given length of time (in milliseconds).
+        Does not change the amount of time between the emitted values. 
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        When you want to emulate a latency in your user experience.
+      </li>     
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Number :&nbsp;<span *ngIf="{ value: number$ | async} as num">{{ num.value }}</span></div>
+    </div>
+  </section>
+</div>
