@@ -1,0 +1,90 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">shareReplay</div>
+    <div class="side-bar_definition">A pipeable, multicasting operator</div>
+    <div class="list-title">What It Does:</div>
+    <ul>
+      <li>
+        Converts a cold, unicast Observable into a hot, multicast Observable.
+      </li>
+      <li>
+        If the name sounds familiar, it's because the <code>shareReplay</code> operator 
+        multicasts via the use of a <code>ReplaySubject</code>. 
+      </li>
+      <li>
+        <strong>
+          The <code>shareReplay</code> operator differs from the <code>share</code> operator in that  
+          the source Observable is not automatically reset when the subscriber count reaches 0.
+          To have this same capability as the <code>share</code> operator, <code>shareReplay</code> 
+          must be passed the following argument, <code>&#123;refCount: true&#125;</code>.
+        </strong>
+      </li>
+    </ul>
+
+    <div class="list-title">When To Use It:</div>
+    <ul>
+      <li>
+        To have all subscribers use the side-effects and computations that have 
+        already been performed for the first subscriber.
+      </li>
+      <li>
+        To give late subscribers the previously emitted values, avoiding the 
+        re-executing of side-effects and computations that have 
+        already been performed for the first subscriber.
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="vm$ | async as vm">
+      <div class="layout_heading">
+        <div class="heading_title">Filter Controls</div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Search Text:</div>
+            <input
+              type="text"
+              placeholder="Type search text"
+              [value]="vm.searchText"
+              (keyup)="keyupSearchText($event)"
+            />
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Select a State/Territory:</div>
+            <select (change)="selectedJurisdiction($event)">
+              <option value="(All)">(All)</option>
+              <ng-container
+                *ngIf="vm.allJurisdictions as jurisdictions"
+              >
+                <option
+                  *ngFor="let juris of jurisdictions"
+                  [value]="juris.code"
+                  [selected]="(vm.selectedJurisdiction) === juris.code"
+                >
+                  {{ juris.name }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <button
+              type="button"
+              class="btn btn-link btn-primary"
+              (click)="addCustomer()"
+            >
+              Add Customer
+            </button>
+          </div>
+        </div>
+      </div>
+      <app-customer-table-with-actions
+        [customers]="vm.filteredCustomers"
+        (editCustomer)="editCustomer($event)"
+        (removeCustomer)="removeCustomer($event)"
+      ></app-customer-table-with-actions>
+    </ng-container>
+  </section>
+</div>

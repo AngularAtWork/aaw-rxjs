@@ -1,0 +1,109 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">Reactive Programming</div>
+    <div class="side-bar_definition">
+      A programming paradigm which involves data streams (i.e. Observables) and achieves results
+      via change propagation.
+    </div>
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li class="highlight">For more complex user interfaces that consist of data retrieved by a multiple API calls</li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title text-center">Patterns We'll Use in Our Reactive Programming</div>
+    </div>
+    <div class="definition-cards">
+      
+      <div class="definition-card">
+        <div class="definition-card_title">
+          Observable Data Services
+        </div>
+        <div class="definition-card_meaning">
+          Data services which act as the sole sources of data retrieval and modification via Observables and public methods.
+        </div>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-card_title">
+          HttpClient Service
+        </div>
+        <div class="definition-card_meaning">
+          Use to make all CRUD (create, read, update, delete) back end calls.  All of its methods return an Observable.
+        </div>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-card_title">State Management</div>
+        <div class="definition-card_meaning">
+          Use RxJS Subjects to manage the state of our application.
+        </div>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-card_title">
+          Subjects
+        </div>
+        <div class="definition-card_meaning">
+          We'll create subjects that all have privately exposed observer methods and publicly exposed Observable methods.
+        </div>
+      </div>
+      <div class="definition-card">
+        <div class="definition-card_title">Async Pipe</div>
+        <div class="definition-card_meaning">
+          Use the Async pipe in Angular templates to automatically subscribe and
+          unsubscribe to observables.
+        </div>
+      </div>
+
+      <div class="definition-card">
+        <div class="definition-card_title">RxJS Operators</div>
+        <div class="definition-card_meaning">
+          <ul>
+            <li>
+              We will use RxJS Creation Operators to create our own observable streams.  
+            </li>
+            <li>
+              We will use RxJS Pipeable Operators to transform and manipulate observable streams.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ng-container>
+      <div class="layout_heading">
+        <div class="heading_title">Jurisdictions:</div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Select a State/Territory:</div>
+            <select
+              *ngIf="allJurisdictions$ | async as allJurisdictions"
+              (change)="changeJurisdictionSelection($event)"
+            >
+              <option value="" [selected]="(selectedJurisdiction$ | async) === ''">
+                (Select)
+              </option>
+              <option
+                *ngFor="let jurisdiction of allJurisdictions"
+                [value]="jurisdiction.name"
+                [selected]="(selectedJurisdiction$ | async) === jurisdiction.name"
+              >
+                {{ jurisdiction.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="display" *ngIf="(display$ | async)?.name">
+          <div class="display_title">You have selected:</div>
+          <div class="display_selection" *ngIf="(display$ | async) as display">
+            <span> {{ display.name }}</span>
+            <span><span class="emphasis">Code:&nbsp;</span>{{ display.code }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+</div>

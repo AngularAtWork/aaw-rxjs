@@ -1,0 +1,122 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">Subjects</div>
+    <div class="side-bar_definition">
+      A Subject is an object that is both an Observable (it has a <code>subscribe</code> method) and an Observer (it has <code>next</code>, <code>complete</code> and <code>error</code> methods).
+    </div>
+    <div class="side-bar_definition">
+      A Subject can start emitting values BEFORE it is subscribed to.
+    </div>
+    <div class="list-title mt-5">
+      Types of Subjects:
+    </div>
+    <ul>
+      <li class="">Subject (aka 'Regular' Subject)</li>
+      <li class="">BehaviorSubject</li>
+      <li class="">ReplaySubject</li>
+      <li class="">AsyncSubject</li>
+    </ul>
+    <div class="subject-controls mt-5">
+      <div class="subject-input">
+        <div class="subject-input_content">
+          <div class="subject-input_heading">Emit Value:</div>
+          <div class="subject-input_control">
+            <input type="text" (input)="emitValue($event)" />
+          </div>
+        </div>
+        <div class="subject-emitted mt-3">
+          <div class="emitted-label">Emitted Values: &nbsp;</div>
+          <div class="emitted-values">{{ emittedValues }}</div>
+        </div>
+      </div>
+      <div class="subject-buttons mt-4">
+        <button type="button" class="btn btn-link btn-primary" (click)="subscribeEarlys()">Subscribe EARLY Subscribers</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="subscribeLates()">Subscribe LATE Subscribers</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="completeAll()">Complete All Subjects</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="errorAll()">Error All Subjects</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="unsubscribeEarlys()">Unsubscribe EARLY Subscribers</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="unsubscribeAll()">Unsubscribe All Subscribers</button>
+      </div>
+    </div>
+  </aside>
+  <section class="layout">
+    <div class="subject-cards">
+      <div class="subject-card">
+        <div class="subject-card_heading">
+          <span class="subject-card_heading_1">Subject (Regular) <small>- new Subject()</small></span>
+          <span class="subject-card_heading_2 text-red">{{ subjectState }}</span>
+        </div>
+        <div class="subject-card_columns">
+          <div class="subject-card_column column-left">
+            <div class="subject-card-column_header">Early Subscriber</div>
+            <div class="subject-card-column_content">{{ subjectEarly }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': earlyState === 'subscribed','text-red': earlyState === 'unsubscribed' }">{{ earlyState || 'not subscribed' }}</div>
+          </div>
+          <hr />
+          <div class="subject-card_column column-right">
+            <div class="subject-card-column_header">Late Subscriber</div>
+            <div class="subject-card-column_content">{{ subjectLate }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': lateState === 'subscribed','text-red': lateState === 'unsubscribed' }">{{ lateState || 'not subscribed' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-card_heading">
+          <span class="subject-card_heading_1">BehaviorSubject <small>- new BehaviorSubject('init')</small></span>
+          <span class="subject-card_heading_2 text-red">{{ subjectState }}</span>
+        </div>
+        <div class="subject-card_columns">
+          <div class="subject-card_column column-left">
+            <div class="subject-card-column_header">Early Subscriber</div>
+            <div class="subject-card-column_content">{{ behaviorEarly }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': earlyState === 'subscribed','text-red': earlyState === 'unsubscribed' }">{{ earlyState || 'not subscribed' }}</div>
+          </div>
+          <hr />
+          <div class="subject-card_column column-right">
+            <div class="subject-card-column_header">Late Subscriber</div>
+            <div class="subject-card-column_content">{{ behaviorLate }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': lateState === 'subscribed','text-red': lateState === 'unsubscribed' }">{{ lateState || 'not subscribed' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-card_heading">
+          <span class="subject-card_heading_1">ReplaySubject <small>- new ReplaySubject({{ replayCount}})</small></span>
+          <span class="subject-card_heading_2 text-red">{{ subjectState }}</span>
+        </div>
+        <div class="subject-card_columns">
+          <div class="subject-card_column column-left">
+            <div class="subject-card-column_header">Early Subscriber</div>
+            <div class="subject-card-column_content">{{ replayEarly }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': earlyState === 'subscribed','text-red': earlyState === 'unsubscribed' }">{{ earlyState || 'not subscribed' }}</div>
+          </div>
+          <hr />
+          <div class="subject-card_column column-right">
+            <div class="subject-card-column_header">Late Subscriber</div>
+            <div class="subject-card-column_content">{{ replayLate }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': lateState === 'subscribed','text-red': lateState === 'unsubscribed' }">{{ lateState || 'not subscribed' }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="subject-card">
+        <div class="subject-card_heading">
+          <span class="subject-card_heading_1">AsyncSubject <small>- new AsyncSubject()</small></span>
+          <span class="subject-card_heading_2 text-red">{{ subjectState }}</span>
+        </div>
+        <div class="subject-card_columns">
+          <div class="subject-card_column column-left">
+            <div class="subject-card-column_header">Early Subscriber</div>
+            <div class="subject-card-column_content">{{ asyncEarly }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': earlyState === 'subscribed','text-red': earlyState === 'unsubscribed' }">{{ earlyState || 'not subscribed' }}</div>
+          </div>
+          <hr />
+          <div class="subject-card_column column-right">
+            <div class="subject-card-column_header">Late Subscriber</div>
+            <div class="subject-card-column_content">{{ asyncLate }}</div>
+            <div class="subject-card-column_state" [ngClass]="{ 'text-green': lateState === 'subscribed','text-red': lateState === 'unsubscribed' }">{{ lateState || 'not subscribed' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

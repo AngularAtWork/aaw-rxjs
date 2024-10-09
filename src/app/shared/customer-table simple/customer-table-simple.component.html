@@ -1,0 +1,40 @@
+<div class="widget" *ngIf="customers">
+  <div class="table-responsive">
+    <table class="table align-items-center">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 450px">Customer Name</th>
+          <th scope="col" class="text-center">Customer Number</th>
+          <th scope="col" class="text-center">Birthday</th>
+          <th scope="col" class="text-center">State/Territory</th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr *ngFor="let customer of customers">
+          <th scope="row">
+            <div class="media align-items-center">
+              <div class="media-body">
+                <div class="lh-100">
+                  <span
+                    class="customer-highlight text-dark font-weight-bold mb-0"
+                    >{{ customer.last | uppercase }},
+                    {{ customer.first }}</span
+                  >
+                </div>
+              </div>
+            </div>
+          </th>
+          <td class="text-center">
+            <span class="font-weight-bold text-muted">{{
+              customer.id
+            }}</span>
+          </td>
+          <td class="price text-center">{{ customer.birthday | date:'MM/dd/yyyy' }}</td>
+          <td class="text-center">
+            <span class="font-weight-heavy">{{ customer.state }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

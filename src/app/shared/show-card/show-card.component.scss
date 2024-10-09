@@ -1,0 +1,20 @@
+@import '../../../assets/scss/variables';
+
+.show-card-container {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: $primary;
+  font-size: 5rem;
+  font-weight: bold;
+  height: 200px;
+  width: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    color: $secondary;
+  }
+}

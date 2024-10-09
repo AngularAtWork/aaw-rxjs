@@ -1,0 +1,39 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">toArray</div>
+    <div class="side-bar_definition">
+      A pipeable, utility operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Collects the individual emissions from the source Observable and 
+        emits them as an array when the source Observable completes.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        When you want to combine individual emissions into a single array and then 
+        emit the array.
+      </li>     
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Customers With Data from Multiple Backend Calls</div>
+    </div>
+    <div class="layout_data">
+      <div class="customer-cards">
+        <ng-container *ngFor="let customer of customers$ | async">
+          <app-customer-card [customer]="customer"></app-customer-card>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>

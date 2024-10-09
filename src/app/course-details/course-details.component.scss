@@ -1,0 +1,88 @@
+@import '../../assets/scss/variables';
+
+.cards {
+  padding-bottom: 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  justify-content: center;
+
+  .card {
+    background-color: $white;
+    border-radius: 5px;
+    padding: 15px 0 0 0;
+
+    &.highlight {
+      background-color: lighten($fourth, 20);
+    }
+
+    .centered-content {
+      font-weight: 700;
+      min-height: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .card-definition {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .card-body {
+      width: 90%;
+      margin: auto auto;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      justify-items: center;
+
+      li {
+        padding-bottom: 1rem;
+      }
+
+      &-header {
+        margin-top: 1rem;
+      }
+    }
+    .card-grid {
+      font-size: 1.4rem;
+      padding: 15px 30px;
+
+      display: grid;
+      grid-auto-rows: max-content;
+      gap: 1rem;
+
+      .card-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .grouping {
+        display: grid;
+        grid-template-columns: 17rem 1fr;
+      }
+
+      .grouping-header {
+        font-weight: 700;
+      }
+
+      .grouping-group {
+        padding-left: 10px;
+      }
+    }
+  }
+}

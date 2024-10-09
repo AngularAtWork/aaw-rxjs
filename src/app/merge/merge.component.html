@@ -1,0 +1,92 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">merge</div>
+    <div class="side-bar_definition">A creation, join operator</div>
+    <div class="list-title">What It Does:</div>
+    <ul>
+      <li>
+        A function that accepts two or more Observables and emits a 
+        single Observable each time any one of them emits.
+      </li>
+    </ul>
+
+    <div class="list-title">When To Use It:</div>
+    <ul>
+      <li>
+        On a group of controls which perform different tasks but have 
+        the same ultimate impact on the UI.  
+        <br>
+        <br>
+        For example, controls that
+        add a customer, delete a specific customer or update a specific 
+        customer have differing back end tasks.  But each will ultimately 
+        update the list of customers shown in the UI.
+        <br>
+        <br>
+        We wouldn't use the merge function on a group of controls which 
+        filter because when each of those controls causes a new emission, 
+        we need to also know the previous values of all the other controls. 
+        <br>
+        <br>
+        <em>NOTE:  Variants include:
+          <ul>
+            <li>concat</li>
+          </ul>
+        </em>
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="vm$ | async as vm">
+      <div class="layout_heading">
+        <div class="heading_title">Filter Controls</div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Search Text:</div>
+            <input
+              type="text"
+              placeholder="Type search text"
+              [value]="vm.searchText"
+              (keyup)="keyupSearchText($event)"
+            />
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <div class="subject-input_heading">Select a State/Territory:</div>
+            <select (change)="selectedJurisdiction($event)">
+              <option value="(All)">(All)</option>
+              <ng-container
+                *ngIf="vm.allJurisdictions as jurisdictions"
+              >
+                <option
+                  *ngFor="let juris of jurisdictions"
+                  [value]="juris.code"
+                  [selected]="(vm.selectedJurisdiction) === juris.code"
+                >
+                  {{ juris.name }}
+                </option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+        <div class="heading_controls">
+          <div class="subject-input">
+            <button
+              type="button"
+              class="btn btn-link btn-primary"
+              (click)="addCustomer()"
+            >
+              Add Customer
+            </button>
+          </div>
+        </div>
+      </div>
+      <app-customer-table-with-actions
+        [customers]="vm.filteredCustomers"
+        (editCustomer)="editCustomer($event)"
+        (removeCustomer)="removeCustomer($event)"
+      ></app-customer-table-with-actions>
+    </ng-container>
+  </section>
+</div>

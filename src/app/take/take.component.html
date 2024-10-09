@@ -1,0 +1,44 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">take</div>
+    <div class="side-bar_definition">
+      A pipeable, filter operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Emits only the first <em>N</em> of values, where <em>N</em> is a supplied parameter, then completes the Observable.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>When you want to force an infinite Observable to complete</li>
+      <li>
+        When you want to limit the number of emissions to a preset number.
+        <br>
+        <br>
+        <em>NOTE:  Variants include:
+          <br>
+          <br>
+          <ul>
+            <li>takeUntil</li>
+            <li>takeWhile</li>
+            <li>takeLast</li>
+            <li>first</li>
+            <li>last</li>
+          </ul>
+        </em>
+      </li>     
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Number :&nbsp;<span *ngIf="{ value: number$ | async } as num">{{ num.value }}</span></div>
+    </div>
+  </section>
+</div>

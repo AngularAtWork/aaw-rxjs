@@ -1,0 +1,100 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">Higher Order Mapping Operators</div>
+    <div class="side-bar_definition">
+      Pipeable, transformation operators
+    </div>
+    <div class="list-title">
+      What They Do:
+    </div>
+    <ul>
+      <li>
+        Flatten higher-order Observables (i.e. Observables <em>of</em> Observables).
+      </li>
+      <li>
+        Replaces nested subscriptions
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use Them:
+    </div>
+    <ul>
+      <li>
+        When you need an operator that subscribes to an inner Observable before transforning it.
+      </li>     
+    </ul>
+    
+    <div class="list-title">
+      How They Differ:
+    </div>
+    <ul>
+      <li>
+        How each handles the currently running inner Observable, 
+        when an emission from the outer Observable occurs simultaneously.
+      </li>     
+    </ul>
+
+    <div class="list-title emphasis">
+      Beware:
+    </div>
+    <p>
+      When an outer Obesrvable emits rapidly before the inner Observable completes, 
+      this can cause memory leaks.  This can be particularly true when using mergeMap or concatMap because 
+      neither has cancellation or ignore capabilities like switchMap and exhaustMap.  To limit the 
+      number of emissions being passed to the inner Observable, use the debounceTime or throttleTime operators. 
+      Or limit emissions that come from the UI, with loading indicators.
+    </p>
+  </aside>
+  <section class="layout">
+    <div class="subject-controls">
+      <div class="subject-input">
+        <div class="subject-input_heading">Type characters:</div>
+        <div class="subject-input_control">
+          <input type="text" #char (input)="inputCharacter($event)" [disabled]="!(demoType$ | async)" />
+        </div>
+        <button type="button" class="btn btn-link btn-primary" (click)="char.value=''; clear()">Clear</button>
+      </div>
+      <div class="subject-buttons">
+        <button type="button" class="btn btn-link btn-primary" (click)="setDemoType(demos.CONCATMAP)">concatMap</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="setDemoType(demos.MERGEMAP)">mergeMap</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="setDemoType(demos.SWITCHMAP)">switchMap</button>
+        <button type="button" class="btn btn-link btn-primary" (click)="setDemoType(demos.EXHAUSTMAP)">exhaustMap</button>
+      </div>
+    </div>    
+    <div class="subject-cards">
+      <div class="subject-cards-heading">World Cities via:<em class="ml-5">{{ demoType$ | async}}</em></div>
+      <ng-container *ngIf=" wordsConcatMap$ | async as words">
+        <ng-container *ngIf="(demoType$ | async) === demos.CONCATMAP">
+          <div class="subject-card" *ngFor="let word of words">
+            <span class="start-letter">{{ word.startLetter}}:</span><span class="word-list">{{ word.wordList }}</span>
+          </div>
+        </ng-container>
+      </ng-container>
+      
+      <ng-container *ngIf=" wordsMergeMap$ | async as words">
+        <ng-container *ngIf="(demoType$ | async) === demos.MERGEMAP">
+          <div class="subject-card" *ngFor="let word of words">
+            <span class="start-letter">{{ word.startLetter}}:</span><span class="word-list">{{ word.wordList }}</span>
+          </div>
+        </ng-container>
+      </ng-container>
+      
+      <ng-container *ngIf=" wordsSwitchMap$ | async as words">
+        <ng-container *ngIf="(demoType$ | async) === demos.SWITCHMAP">
+          <div class="subject-card" *ngFor="let word of words">
+            <span class="start-letter">{{ word.startLetter}}:</span><span class="word-list">{{ word.wordList }}</span>
+          </div>
+        </ng-container>
+      </ng-container>    
+
+      <ng-container *ngIf=" wordsExhaustMap$ | async as words">
+        <ng-container *ngIf="(demoType$ | async) === demos.EXHAUSTMAP">
+          <div class="subject-card" *ngFor="let word of words">
+            <span class="start-letter">{{ word.startLetter}}:</span><span class="word-list">{{ word.wordList }}</span>
+          </div>
+        </ng-container>
+      </ng-container>      
+    </div>
+  </section>
+</div>

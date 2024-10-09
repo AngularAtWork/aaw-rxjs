@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="digit-container">
+    <div class="quadrant top-left">
+      <div class="num top-left number-circle">{{ arrayOfNumbers[0] }}</div>
+      <div class="num top-right number-circle">{{ arrayOfNumbers[1] }}</div>
+      <div class="num bottom-left number-circle">{{ arrayOfNumbers[2] }}</div>
+      <div class="num bottom-right number-circle">{{ arrayOfNumbers[3] }}</div>
+    </div>
+    <div class="digit-control">
+      <div class="heading_controls">
+        <div class="subject-input">
+          <button
+            type="button"
+            class="btn btn-link btn-primary"
+            [disabled]="blockEntry"
+            (click)="enterQuadrantNumbers(1)"
+          >
+            Push
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="digit-container">
+    <div class="quadrant bottom-left">
+      <div class="num top-left number-circle">{{ arrayOfNumbers[4] }}</div>
+      <div class="num top-right number-circle">{{ arrayOfNumbers[5] }}</div>
+      <div class="num bottom-left number-circle">{{ arrayOfNumbers[6] }}</div>
+      <div class="num bottom-right number-circle">{{ arrayOfNumbers[7] }}</div>
+    </div>
+    <div class="digit-control">
+      <div class="heading_controls">
+        <div class="subject-input">
+          <button
+            type="button"
+            class="btn btn-link btn-primary"
+            [disabled]="blockEntry"
+            (click)="enterQuadrantNumbers(2)"
+          >
+            Push
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="digit-container">
+    <div class="quadrant top-right">
+      <div class="num top-left number-circle">{{ arrayOfNumbers[8] }}</div>
+      <div class="num top-right number-circle">{{ arrayOfNumbers[9] }}</div>
+      <div class="num bottom-left number-circle">{{ arrayOfNumbers[10] }}</div>
+      <div class="num bottom-right number-circle">{{ arrayOfNumbers[11] }}</div>
+    </div>
+    <div class="digit-control">
+      <div class="heading_controls">
+        <div class="subject-input">
+          <button
+            type="button"
+            class="btn btn-link btn-primary"
+            [disabled]="blockEntry"
+            (click)="enterQuadrantNumbers(3)"
+          >
+            Push
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="digit-container">
+    <div class="quadrant bottom-right">
+      <div class="num top-left number-circle">{{ arrayOfNumbers[12] }}</div>
+      <div class="num top-right number-circle">{{ arrayOfNumbers[13] }}</div>
+      <div class="num bottom-left number-circle">{{ arrayOfNumbers[14] }}</div>
+      <div class="num bottom-right number-circle">{{ arrayOfNumbers[15] }}</div>
+    </div>
+    <div class="digit-control">
+      <div class="heading_controls">
+        <div class="subject-input">
+          <button
+            type="button"
+            class="btn btn-link btn-primary"
+            [disabled]="blockEntry"
+            (click)="enterQuadrantNumbers(4)"
+          >
+            Push
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

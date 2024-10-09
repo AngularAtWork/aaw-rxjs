@@ -1,0 +1,17 @@
+@import '../../assets/scss/variables';
+
+.spinner-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.spinner-container  ::ng-deep .la-ball-spin {
+    color: $primary !important;
+    z-index: 100;
+}
+
+.spinner-container p {
+    font-size: 24px;
+    font-weight: 600;
+    color: darken($primary, 5);
+}

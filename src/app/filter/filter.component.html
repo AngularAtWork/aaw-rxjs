@@ -1,0 +1,41 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">filter</div>
+    <div class="side-bar_definition">
+      A pipeable, filtering operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        Filters items emitted by the source Observable by emitting 
+        only those that satisfy a specified predicate (i.e. boolean formula).
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        Anytime you want to filter the emissions of the source Observable.
+        <br>
+        <br>
+        <em>NOTE:  does not filter the individual items within an array result.</em>
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <div class="layout_heading">
+      <div class="heading_title">Customers from Ohio</div>
+    </div>
+    <div class="layout_data">
+      <div class="customer-cards">
+        <ng-container *ngFor="let customer of customers$ | async">
+          <app-customer-card [customer]="customer"></app-customer-card>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>

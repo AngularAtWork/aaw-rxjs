@@ -1,0 +1,50 @@
+<div class="content">
+  <aside class="side-bar">
+    <div class="side-bar_heading">tap</div>
+    <div class="side-bar_definition">
+      A pipeable, utility operator
+    </div>
+    <div class="list-title">
+      What It Does:
+    </div>
+    <ul>
+      <li>
+        It performs side effects while passing along the source Observable's value unchanged.
+      </li>
+    </ul>
+
+    <div class="list-title">
+      When To Use It:
+    </div>
+    <ul>
+      <li>
+        While coding, use it to check the type of the value being passed from the source observable before it.
+      </li>
+      <li>
+        Anytime you want to perform a side-effect on the value from the source Observable or operator before it. 
+        <p>
+          For example, to <code>console.log</code> the value passed into it (for debugging or during development), or to emit a new value of a Subject.
+        </p>
+      </li>
+    </ul>
+  </aside>
+  <section class="layout">
+    <ng-container *ngIf="results$ | async">
+      <div class="layout_heading">
+        <div class="heading_title">Tap Demo</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="vm$ | async as vm">
+      <div class="layout_heading">
+        <div class="heading_title">Customers</div>
+      </div>
+      <div class="layout_data">
+        <div class="customer-cards">
+          <ng-container *ngFor="let customer of vm">
+            <app-customer-card [customer]="customer"></app-customer-card>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </section>
+</div>

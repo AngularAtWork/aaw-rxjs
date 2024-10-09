@@ -1,0 +1,141 @@
+@import '../../assets/scss/variables';
+
+.side-bar {
+  p,
+  ul {
+    margin-block-start: 0;
+    margin-block-end: 1rem;
+  }
+
+  li {
+    font-size: 1.25rem;
+    padding-bottom: 5px;
+  }
+  
+  .emphasis {
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  p {
+    font-size: 1.25rem;
+    padding: 5px;
+  }
+
+  .list-title {
+    margin-top: 5px;
+  }
+}
+
+.layout {
+  padding-right: 15px;
+  min-height: calc(100vh - 8rem);
+
+  display: grid;
+  grid-template-rows: 20rem 1fr;
+  gap: 20px;
+
+  &_heading {
+    background-color: $white;
+    border-radius: 5px;
+    color: $primary;
+    font-weight: 700;
+    padding: 15px;
+    vertical-align: middle;
+  }
+
+  .subject-controls {
+    background-color: $white;
+    color: $primary;
+    border-radius: 5px;
+    padding: 0 15px;
+
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    .subject-input {
+      padding: 15px;
+
+      display:  grid;
+      grid-template-columns: 150px 250px 100px;
+      align-items: center;
+      justify-content: center;
+
+      .subject-input_heading {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .subject-input_control input {
+        border: 1px solid $primary;
+        border-radius: 5px;
+        height: 5rem;
+        font-size: 24px;
+        font-weight: 700;
+        text-align: center;
+        width: 200px;
+      }
+
+      .subject-emitted {
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+    }
+
+    .subject-buttons {
+      padding: 0 10rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+  
+      * {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        height: 50%;
+      }
+    }
+  }
+
+  .subject-cards {
+    background-color: $white;
+    color: $primary;
+    border-radius: 5px;
+    padding: 0 15px;
+
+    display: grid;
+    grid-template-rows: 50px repeat(auto-fit, 50px);
+
+    .subject-cards-heading {
+      color: $primary;
+      font-size: 2rem;
+      font-weight: 700;
+      padding: 15px 0;
+    }
+
+    .subject-card {
+      font-size: 1.6rem;
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+
+      .start-letter {
+        color: $primary;
+        font-size: 2rem;
+        font-weight: 700;
+        align-self: center;
+        justify-self: center;
+      }
+
+      .word-list {
+        color: $primary;
+        font-weight: 400;
+        justify-self: start;
+        align-self: center;
+      }
+    }
+
+  }
+}
+
+
